@@ -1,0 +1,27 @@
+{
+  "name": "Barve Guruji AI",
+  "short_name": "Guruji AI",
+  "description": "A personal PWA astrologer chat based on the Vedic wisdom of Barve Guruji.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "theme_color": "#4a0404",
+  "background_color": "#fdfbf7",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
