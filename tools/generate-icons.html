@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generate Icons</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; text-align: center; background: #fdfbf7; color: #4a0404; }
+    button { background: #ff9933; color: #4a0404; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+    button:hover { background: #4a0404; color: #fdfbf7; }
+    a { display: block; margin-top: 0.5rem; color: #4a0404; }
+  </style>
+</head>
+<body>
+  <h1>Icon Generator</h1>
+  <p>This tool generates PNG icons (192x192 and 512x512) from the SVG used by Barve Guruji AI. Click the button below and download the files.</p>
+  <button id="genBtn">Generate Icons</button>
+  <div id="output" style="margin-top: 1rem;"></div>
+  <script>
+    // Inline SVG string (same as icons/icon.svg)
+    const svgString = `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">\n  <rect width="512" height="512" fill="#4a0404"/>\n  <rect x="128" y="280" width="256" height="152" rx="16" fill="#ff9933"/>\n  <rect x="220" y="320" width="72" height="112" rx="8" fill="#4a0404"/>\n  <polygon points="256,100 120,280 392,280" fill="#ff9933"/>\n  <rect x="236" y="60" width="40" height="60" fill="#ff9933"/>\n  <circle cx="256" cy="48" r="28" fill="#ff9933"/>\n</svg>`;
+    function generateIcons() {
+      const sizes = [192, 512];
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+      sizes.forEach((size) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        const blob = new Blob([svgString], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, size, size);
+          URL.revokeObjectURL(url);
+          const dataURL = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = dataURL;
+          link.download = `icon-${size}.png`;
+          link.textContent = `Download icon-${size}.png`;
+          output.appendChild(link);
+        };
+        img.src = url;
+      });
+    }
+    document.getElementById('genBtn').addEventListener('click', generateIcons);
+  </script>
+</body>
+</html>
