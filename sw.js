@@ -1,6 +1,6 @@
 // sw.js - Service Worker for Barve Guruji AI
 
-const CACHE_NAME = 'barve-guruji-cache-v2';
+const CACHE_NAME = 'barve-guruji-cache-v3';
 const APP_SHELL = [
   '/',
   './index.html',
@@ -69,4 +69,5 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+
 
