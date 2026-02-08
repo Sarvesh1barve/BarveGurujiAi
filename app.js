@@ -366,7 +366,7 @@ async function callGeminiAPI(session) {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 30000);
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -580,3 +580,4 @@ messageInput.addEventListener('keydown', (e) => {
 
 // Start the application
 init();
+
