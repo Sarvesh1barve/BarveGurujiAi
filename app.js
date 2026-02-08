@@ -55,7 +55,7 @@ Use Bullet points for lists.
 `.trim();
 
 // ✅ Gemini API config (use v1beta + header key, as per docs)
-const GEMINI_MODEL = "gemini-2.0-flash";
+const GEMINI_MODEL = "gemini-1.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 // DOM helpers
@@ -730,3 +730,4 @@ messageInput.addEventListener("keydown", (e) => {
 
 // Start
 init();
+
