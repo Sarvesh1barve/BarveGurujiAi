@@ -377,45 +377,41 @@ function updateLanguageUI() {
 // So we prepend SYSTEM_PROMPT as the first content message.
 // This is the most compatible approach.
 function buildPayload(sessionMessages) {
-  const lastMsgs = sessionMessages.slice(-MAX_HISTORY);
 
-  const lang = getLanguage();
-  const langHint =
-    lang === "mr"
-      ? "Marathi Mode: Respond in pure, formal Pramaan Marathi."
-      : "English Mode: Respond in English using Vedic terms (Upay, Grahan, Tithi, etc.).";
+  const lastMsgs = sessionMessages.slice(-12);
 
-  const contents = [];
-
-  // System prompt as first content
-  contents.push({
-    parts: [
-      {
-        text:
-          SYSTEM_PROMPT +
-          "\n\n" +
-          "LANGUAGE MODE:\n" +
-          langHint +
-          "\n\n" +
-          "Follow the formatting rules strictly.",
-      },
-    ],
-  });
-
-  // Then conversation messages (we keep as parts-only; v1beta examples allow this)
-  lastMsgs.forEach((m) => {
-    contents.push({
-      parts: [{ text: m.content }],
-    });
-  });
+  const contents = lastMsgs.map(m => ({
+    role: m.role === "assistant" ? "model" : "user",
+    parts: [{ text: m.content }]
+  }));
 
   return {
-    contents,
-    generationConfig: {
-      temperature: 0.7,
-      topP: 0.95,
-      maxOutputTokens: 1024,
+    systemInstruction: {
+      parts: [{
+        text: SYSTEM_PROMPT + `
+
+CRITICAL BEHAVIOR RULES:
+
+- Never break character.
+- Never say you are an AI.
+- Respond like a real Maharashtrian Guruji.
+- Be authoritative, calm, and spiritual.
+- Avoid generic modern chatbot language.
+- Give structured answers.
+- Always provide remedies when prediction is negative.
+- Prefer Marathi unless user writes English.
+`
+      }]
     },
+
+    contents,
+
+    generationConfig: {
+      temperature: 0.35 – 0.5,   // ⭐ VERY IMPORTANT (lower = smarter)
+      topP: 0.9,
+      topK: 32,
+      maxOutputTokens: 2048
+    }
   };
 }
 
@@ -730,5 +726,6 @@ messageInput.addEventListener("keydown", (e) => {
 
 // Start
 init();
+
 
 
