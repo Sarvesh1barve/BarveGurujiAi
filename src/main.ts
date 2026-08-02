@@ -1,4 +1,5 @@
 import "./styles.css";
+import { markStartupComplete, renderFatalStartup } from "./startupFallback";
 import type { AppSettings, VerifiedChart, VerifiedContext } from "./types/domain";
 import type { ChatMessage, Consultation, StoredAttachment } from "./types/storage";
 import { renderAppShell } from "./ui/shell";
@@ -371,4 +372,4 @@ element("#library-list").addEventListener("click", async (event) => { const id =
 window.addEventListener("pointerdown", resetIdleKeyTimer, { passive: true });
 window.addEventListener("keydown", resetIdleKeyTimer);
 
-void initialise().catch((error) => { toast(error instanceof Error ? error.message : "Application startup failed."); });
+void initialise().then(markStartupComplete).catch(renderFatalStartup);

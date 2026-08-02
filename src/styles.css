@@ -112,3 +112,9 @@ label { display: block; margin: .7rem 0; font-size: .78rem; font-weight: 700; } 
 }
 @media (max-width: 430px) { .topbar-actions .status-dot{display:none}.quick-card{min-width:116px}.message-card{max-width:95%;padding:.72rem}.composer .button-danger{padding:.4rem;min-height:42px}.library-button{display:none} }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
+
+.fatal-startup { width: min(620px, calc(100% - 2rem)); margin: 12vh auto; border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; background: var(--paper); box-shadow: var(--shadow); }
+.fatal-startup h1 { margin-top: 0; color: var(--maroon); font-family: Georgia, serif; }
+.fatal-startup-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0; }
+.fatal-startup details { color: var(--muted); }
+.fatal-startup code { display: block; margin-top: .6rem; overflow-wrap: anywhere; white-space: pre-wrap; }
