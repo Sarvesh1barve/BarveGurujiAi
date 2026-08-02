@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Barve Guruji AI temple mark">
+  <rect width="512" height="512" rx="92" fill="#5b1115"/>
+  <circle cx="256" cy="244" r="178" fill="#7b1e22" stroke="#f4b44d" stroke-width="8"/>
+  <path d="M256 62l19 39-19 28-19-28z" fill="#ffd88a"/>
+  <path d="M244 102h24v51h-24zM212 153h88l-15 42h-58z" fill="#f4b44d"/>
+  <path d="M256 154L112 303h288z" fill="#f4b44d" stroke="#ffd88a" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M141 303h230v124H141z" fill="#e9902f"/>
+  <path d="M209 427V321h94v106z" fill="#5b1115"/>
+  <path d="M236 427v-78a20 20 0 0140 0v78z" fill="#2f080a"/>
+  <circle cx="256" cy="257" r="30" fill="#fff2cf"/>
+  <path d="M256 236v42M235 257h42" stroke="#b54b24" stroke-width="7" stroke-linecap="round"/>
+</svg>
